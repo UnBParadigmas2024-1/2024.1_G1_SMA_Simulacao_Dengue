@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8521
 
 # Defina o comando para executar a aplicação
-ENTRYPOINT ["mesa", "runserver", "src/server.py"]
+ENTRYPOINT ["mesa", "runserver", "src"]
