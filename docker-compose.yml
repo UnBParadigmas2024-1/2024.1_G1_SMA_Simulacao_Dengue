@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  mesa_app:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8521:8521"  # Exemplo: expõe a porta 8000 do container na porta 8000 da máquina host
