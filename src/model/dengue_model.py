@@ -25,8 +25,9 @@ class DengueContaminationModel(Model):
             self.schedule.add(mosquito)
         
         for i in range(initial_water):
-            water = WaterObject(i + initial_people + initial_mosquitoes, self)
-            self.grid.place_agent(water, (self.random.randrange(self.grid.width), self.random.randrange(self.grid.height)))
+            pos = (self.random.randrange(self.grid.width), self.random.randrange(self.grid.height))
+            water = WaterObject(i + initial_people + initial_mosquitoes, self, pos)
+            self.grid.place_agent(water, pos)
         
         self.running = True
 

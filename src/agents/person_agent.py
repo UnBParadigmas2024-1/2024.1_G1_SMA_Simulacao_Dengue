@@ -1,5 +1,7 @@
 from mesa import Agent
 
+from agents.water_object import WaterObject
+
 class PersonAgent(Agent):
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
