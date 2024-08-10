@@ -1,3 +1,4 @@
+from person_agent import PersonAgent
 from mesa import Agent
 
 
