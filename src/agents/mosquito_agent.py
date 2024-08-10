@@ -15,7 +15,7 @@ class MosquitoAgent(Agent):
         new_position = self.random.choice(possible_steps)
         self.model.grid.move_agent(self, new_position)
 
-    def sting_person(self, person: PersonAgent):
+    def bit_person(self, person: PersonAgent):
         if self.state == "Infectado":
             person.infect()
 
