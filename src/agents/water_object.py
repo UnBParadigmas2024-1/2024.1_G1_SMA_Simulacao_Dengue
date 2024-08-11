@@ -7,3 +7,8 @@ class WaterObject(Agent):
     
     def step(self):
         pass
+
+    # Se a pessoa encontrar agua parada ele remove a agua
+    def remove_standing_water(self):
+        self.model.grid.remove_agent(self)
+        print("Agua parada removida.")

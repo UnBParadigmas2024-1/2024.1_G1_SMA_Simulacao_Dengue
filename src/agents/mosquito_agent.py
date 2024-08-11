@@ -1,8 +1,11 @@
 from person_agent import PersonAgent
 from mesa import Agent
 
+import uuid
+from agents.water_object import WaterObject
 
 class MosquitoAgent(Agent):
+
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
         self.state = "Não infectado"
@@ -21,6 +24,13 @@ class MosquitoAgent(Agent):
 
     def step(self):
         self.move()
+
+        neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
+        water_objects = [agent for agent in neighbors if isinstance(agent, WaterObject)]
+        for _ in water_objects:
+            self.create_mosquitos()
+            break
+
         # self.life_time -= 1
         # if self.life_time <= 0:
         #     self.model.grid.remove_agent(self)
@@ -44,3 +54,10 @@ class MosquitoAgent(Agent):
         #     if person.state != "Morto":
         #         if self.state == "Não infectado" and person.state in ["Dengue", "Dengue Hemorrágica"]:
         #             self.state = "Infectado"
+
+    def create_mosquitos(self):
+        for _ in range(self.random.randint(1, 3)):
+            new_mosquito = MosquitoAgent(uuid.uuid1(), self.model)
+            self.model.grid.place_agent(new_mosquito, self.pos)
+            self.model.schedule.add(new_mosquito)
+        print("Novos mosquitos criados.")

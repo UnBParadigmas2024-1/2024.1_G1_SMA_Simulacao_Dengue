@@ -18,7 +18,8 @@ class DengueContaminationModel(Model):
         self.schedule = RandomActivation(self)
 
         self.datacollector = DataCollector(
-            agent_reporters={"State": lambda a: a.state, "Infections": lambda a: getattr(a, "infections", 0)}
+            agent_reporters={"State": lambda a: a.state, "Infections": lambda a: getattr(a, "infections", 0)},
+            model_reporters={"Mosquito Count": self.get_mosquito_count}
         )
 
         # Create persons
@@ -46,3 +47,7 @@ class DengueContaminationModel(Model):
         if self.grid.is_cell_empty((x, y)):
             self.grid.place_agent(agent, (x, y))
             self.schedule.add(agent)
+
+    def get_mosquito_count(self):
+        # Conta o número de mosquitos no modelo
+        return len([a for a in self.schedule.agents if isinstance(a, MosquitoAgent)])

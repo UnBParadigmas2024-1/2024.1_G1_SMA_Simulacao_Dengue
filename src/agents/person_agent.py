@@ -26,7 +26,14 @@ class PersonAgent(Agent):
     def step(self):
         self.move()
         
-
+        # Remove agua parada
+        neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
+        water_objects = [agent for agent in neighbors if isinstance(agent, WaterObject)]
+        for water in water_objects:
+            water.remove_standing_water()
+            break
+       
+        # cell_contents = self.model.grid.get_cell_list_contents([self.pos])
         # water = [obj for obj in cell_contents if isinstance(obj, WaterObject)]
         # if water:
         #     self.model.grid.remove_agent(water[0])
