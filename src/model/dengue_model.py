@@ -17,9 +17,19 @@ class DengueContaminationModel(Model):
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
 
+        self.num_people = initial_people
+        self.num_mosquitoes = initial_mosquitoes
+
         self.datacollector = DataCollector(
-            agent_reporters={"State": lambda a: a.state, "Infections": lambda a: getattr(a, "infections", 0)},
-            model_reporters={"Mosquito Count": self.get_mosquito_count}
+            #agent_reporters={"State": lambda a: a.state, "Infections": lambda a: getattr(a, "infections", 0)}
+            model_reporters={
+                "Total People": lambda m: m.num_people,
+                "Total Mosquitoes": lambda m: m.num_mosquitoes
+            },
+            agent_reporters={
+                "State": lambda a: getattr(a, "state", None), 
+                "Infections": lambda a: getattr(a, "infections", 0)
+            }
         )
 
         # Create persons
@@ -40,6 +50,8 @@ class DengueContaminationModel(Model):
     def step(self):
         self.schedule.step()
         self.datacollector.collect(self)
+        self.num_people = sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent))
+        self.num_mosquitoes = sum(1 for agent in self.schedule.agents if isinstance(agent, MosquitoAgent))
     
     def place_agent_randomly(self, agent):
         x = self.random.randrange(self.grid.width)
