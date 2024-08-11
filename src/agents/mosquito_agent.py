@@ -27,6 +27,11 @@ class MosquitoAgent(Agent):
         #     return
 
         cell_contents = self.model.grid.get_cell_list_contents([self.pos])
+
+        people = [obj for obj in cell_contents if isinstance(obj, PersonAgent)]
+        for person in people:
+            self.bit_person(person)
+
         # water = [obj for obj in cell_contents if isinstance(obj, WaterObject)]
         # if water:
         #     for _ in range(self.random.randint(1, 3)):
