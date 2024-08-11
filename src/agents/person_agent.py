@@ -1,8 +1,6 @@
-from mosquito_agent import MosquitoAgent
 from mesa import Agent
 
 from agents.water_object import WaterObject
-from agents.mosquito_agent import MosquitoAgent
 
 HEALTHY = "Saudável"
 DENGUE = "Dengue"
@@ -25,18 +23,7 @@ class PersonAgent(Agent):
 
     def step(self):
         self.move()
-        
-        # Remove agua parada
-        neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
-        water_objects = [agent for agent in neighbors if isinstance(agent, WaterObject)]
-        for water in water_objects:
-            water.remove_standing_water()
-            break
-       
-        # cell_contents = self.model.grid.get_cell_list_contents([self.pos])
-        # water = [obj for obj in cell_contents if isinstance(obj, WaterObject)]
-        # if water:
-        #     self.model.grid.remove_agent(water[0])
+        self.interact_with_water()
     
     def interact_with_water(self):
         neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
@@ -45,34 +32,16 @@ class PersonAgent(Agent):
             water.remove_standing_water()
             break
     
-    def interact_with_mosquitoes(self):
-        neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
-        mosquitoes_objects = [agent for agent in neighbors if isinstance(agent, MosquitoAgent)]
-        for mosquitoes in mosquitoes_objects:
-            if mosquitoes.state == "Infectado":
-                self.infect()
-    
-
     def step(self):
         if self.state != DEAD:
             self.move()
             self.interact_with_water()
-            self.interact_with_mosquitoes()
-            cell_contents = self.model.grid.get_cell_list_contents([self.pos])
-
-        mosquitoes = [obj for obj in cell_contents if isinstance(obj, MosquitoAgent)]
-        for mosquito in mosquitoes:
-            if (
-                self.state in ["Dengue", "Dengue Hemorrágica"]
-                and mosquito.state == "Não infectado"
-            ):
-                mosquito.state = "Infectado"
-
+    
     def infect(self):
-        if self.state == HEALTHY:
-            self.state = DENGUE
+        if self.state == "Saudável":
+            self.state = "Dengue"
             self.infections += 1
-        elif self.state == DENGUE:
-            self.state = SEVERE_DENGUE
-        elif self.state == SEVERE_DENGUE:
-            self.state = DEAD
+        elif self.state == "Dengue":
+            self.state = "Dengue Hemorrágica"
+        elif self.state == "Dengue Hemorrágica":
+            self.state = "Morto"
