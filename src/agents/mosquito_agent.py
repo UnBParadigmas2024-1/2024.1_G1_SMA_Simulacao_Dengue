@@ -1,14 +1,22 @@
-from person_agent import PersonAgent
+
+import random
 from mesa import Agent
 
 import uuid
 from agents.water_object import WaterObject
+from agents.person_agent import PersonAgent
+
+INFECTED = "Infectado"
+NOT_INFECTED = "Não infectado"
+DEAD = "Morto"
 
 class MosquitoAgent(Agent):
-
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
-        self.state = "Não infectado"
+        states = [INFECTED, NOT_INFECTED]
+        random_state = self.random.randint(0, 1)
+
+        self.state = states[random_state]
         self.life_time = 3
 
     def move(self):
@@ -17,47 +25,41 @@ class MosquitoAgent(Agent):
         )
         new_position = self.random.choice(possible_steps)
         self.model.grid.move_agent(self, new_position)
+    
+    def check_life_time(self):
+        self.life_time -= 1
 
-    def bit_person(self, person: PersonAgent):
-        if self.state == "Infectado":
-            person.infect()
+        if self.life_time <= 0:
+            self.state = DEAD
+            self.model.grid.remove_agent(self)
+            
+    
+    def sting_person(self):
+        neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
+        persons = [agent for agent in neighbors if isinstance(agent, PersonAgent)]
 
-    def step(self):
-        self.move()
-
+        if len(persons) > 0:
+            person = random.choice(persons)
+            if self.state == "Infectado":
+                person.infect()
+    
+    def create_mosquitos(self):
         neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
         water_objects = [agent for agent in neighbors if isinstance(agent, WaterObject)]
+
         for _ in water_objects:
-            self.create_mosquitos()
+            for _ in range(self.random.randint(1, 3)):
+                new_mosquito = MosquitoAgent(uuid.uuid1(), self.model)
+                self.model.grid.place_agent(new_mosquito, self.pos)
+                self.model.schedule.add(new_mosquito)
             break
-
-        # self.life_time -= 1
-        # if self.life_time <= 0:
-        #     self.model.grid.remove_agent(self)
-        #     return
-
-        cell_contents = self.model.grid.get_cell_list_contents([self.pos])
-
-        people = [obj for obj in cell_contents if isinstance(obj, PersonAgent)]
-        for person in people:
-            self.bit_person(person)
-
-        # water = [obj for obj in cell_contents if isinstance(obj, WaterObject)]
-        # if water:
-        #     for _ in range(self.random.randint(1, 3)):
-        #         new_mosquito = MosquitoAgent(self.model.next_id(), self.model)
-        #         self.model.grid.place_agent(new_mosquito, self.pos)
-        #         self.model.schedule.add(new_mosquito)
-
-        # people = [obj for obj in cell_contents if isinstance(obj, PersonAgent)]
-        # for person in people:
-        #     if person.state != "Morto":
-        #         if self.state == "Não infectado" and person.state in ["Dengue", "Dengue Hemorrágica"]:
-        #             self.state = "Infectado"
-
-    def create_mosquitos(self):
-        for _ in range(self.random.randint(1, 3)):
-            new_mosquito = MosquitoAgent(uuid.uuid1(), self.model)
-            self.model.grid.place_agent(new_mosquito, self.pos)
-            self.model.schedule.add(new_mosquito)
         print("Novos mosquitos criados.")
+
+    def step(self):
+        if self.state != DEAD:
+            self.move()
+            self.sting_person()
+            self.create_mosquitos()
+            self.check_life_time()
+            
+    
