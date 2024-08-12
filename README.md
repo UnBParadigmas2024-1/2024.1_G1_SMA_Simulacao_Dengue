@@ -133,7 +133,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Davi Marinho da Silva Campos | | |
 | Diógenes Dantas Lélis Júnior | | |
 | Bernardo Chaves Pissutti | | |
-| Abraão Alves | | |
+| Abraão Alves | Ajuda na criação do Agente pessoas | Boa |
 | Denniel William Roriz Lima |  ||
 | Francisco Mizael Santos da Silva | | |
 | Mateus Caltabiano Neves Frauzino |  ||
