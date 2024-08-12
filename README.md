@@ -132,8 +132,8 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Paulo Vitor Silva Abi Acl | | |
 | Leonardo de Souza Takehana | Correção e edição de alguns bugs e melhoria do modelo, como a adição de probabilidades de progressão da doença, reprodução dos mosquitos e também criação de novas poças | Boa | 
 | Davi Marinho da Silva Campos | | |
-| Diógenes Dantas Lélis Júnior | | |
-| Bernardo Chaves Pissutti | | |
+| Diógenes Dantas Lélis Júnior | Ajuda na criação do Modelo de Contaminação e ajustes no agente pessoa | Boa |
+| Bernardo Chaves Pissutti | Ajudei a desenvolver o agente da água e as interações desse agente com os agentes do mosquito e da pessoa e a mostrar a evolução  da quantidade de mosquitos na simulação. | Boa |
 | Abraão Alves | Ajuda na criação do Agente pessoas | Boa |
 | Denniel William Roriz Lima |  ||
 | Francisco Mizael Santos da Silva | | |
