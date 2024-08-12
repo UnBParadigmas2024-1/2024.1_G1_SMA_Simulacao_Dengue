@@ -35,11 +35,13 @@ class PersonAgent(Agent):
             for water in water_objects:
                 if random.random() < 0.6:
                     water.remove_standing_water()
+                    print("Agua parada removida.")
                     break
         else:
             if random.random() < 0.1:
                 new_water = WaterObject(uuid.uuid1(), self.model)
                 self.model.grid.place_agent(new_water, self.pos)
+                print("Agua parada adicionada.")
         
     def step(self):
         if self.state != DEAD:

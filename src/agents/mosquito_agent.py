@@ -1,4 +1,3 @@
-
 import random
 from mesa import Agent
 
@@ -17,7 +16,7 @@ class MosquitoAgent(Agent):
         random_state = self.random.randint(0, 1)
 
         self.state = states[random_state]
-        self.life_time = 3
+        self.life_time = 10
 
     def move(self):
         possible_steps = self.model.grid.get_neighborhood(
@@ -47,13 +46,9 @@ class MosquitoAgent(Agent):
         neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
         water_objects = [agent for agent in neighbors if isinstance(agent, WaterObject)]
 
-        for _ in water_objects:
-            for _ in range(self.random.randint(1, 3)):
-                new_mosquito = MosquitoAgent(uuid.uuid1(), self.model)
-                self.model.grid.place_agent(new_mosquito, self.pos)
-                self.model.schedule.add(new_mosquito)
-            break
-        print("Novos mosquitos criados.")
+        for water in water_objects:
+            water.state = "Contaminada"
+            print("Água contaminada.")
 
     def step(self):
         if self.state != DEAD:
@@ -61,5 +56,3 @@ class MosquitoAgent(Agent):
             self.sting_person()
             self.create_mosquitos()
             self.check_life_time()
-            
-    

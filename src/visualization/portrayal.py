@@ -13,6 +13,12 @@ def getColorPerson(agent):
     else:
         return "black"
 
+def getColorWater(agent):
+    if agent.state == "Limpa":
+        return "cyan"
+    else:
+        return "blue"
+
 def getPortrayalPerson(agent):
     return {
         "Shape": "circle",
@@ -32,7 +38,7 @@ def circle_portrayal_example(agent):
             "Shape": "circle",
             "Filled": "true",
             "Layer": 2,
-            "Color": "#964b00",
+            "Color": "brown",
             "r": 0.5,
             "id": f"Mosquito {agent.unique_id} {agent.state}"
         }
@@ -41,7 +47,7 @@ def circle_portrayal_example(agent):
             "Shape": "circle",
             "Filled": "true",
             "Layer": 0,
-            "Color": "#0ABCB0",
+            "Color": getColorWater(agent),
             "r": 0.5,
             "id": f"Agua parada {agent.unique_id}"
         }
@@ -67,9 +73,3 @@ situation_chart = mesa.visualization.ChartModule(
     [{"Label": "Mosquito Count", "Color": "Green"}],
     data_collector_name="datacollector"
 )
-
-# situation_chart = mesa.visualization.ChartModule(
-#    [{"Label": "Dengue", "Color": "Yellow"},
-#     {"Label": "Dengue Hemorrágica", "Color": "Red"},
-#     {"Label": "Morto", "Color": "Black"}],
-#     data_collector_name="datacollector")
