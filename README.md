@@ -128,31 +128,37 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
+| Abraão Alves | Ajuda na criação do Agente pessoas | Boa |
+| Bernardo Chaves Pissutti | Ajudei a desenvolver o agente da água e as interações desse agente com os agentes do mosquito e da pessoa e a mostrar a evolução  da quantidade de mosquitos na simulação. | Boa |
+| Davi Marinho da Silva Campos |  Ajudei na criação da ideia do projeto e das regras necessárias, também criei o código inicial dos agentes, a estrutura do projeto e o layout, e posteriormente ajudei nos agentes mosquito e pessoa e na finalização do projeto.  | Boa |
+| Denniel William Roriz Lima | Estrutura do projeto, resolução de bugs e ajustes funções de step, movimentação, ajustes nas funções de PersonAgent, WaterObject e MosquitoAgent.
+Significância da Contribuição para o Projeto | Excelente |
+| Diógenes Dantas Lélis Júnior | Ajuda na criação do Modelo de Contaminação e ajustes no agente pessoa | Boa |
+| Francisco Mizael Santos da Silva | | |
+| Leonardo de Souza Takehana | Correção e edição de alguns bugs e melhoria do modelo, como a adição de probabilidades de progressão da doença, reprodução dos mosquitos e também criação de novas poças | Boa | 
+| Lucas Macedo Barboza | Ajuda na criação do Agente pessoas, ajustes no agente mosquito. | Boa |
+| Mateus Caltabiano Neves Frauzino | | |
 | Paulo Henrique | Participei do desenvolvimento do agente mosquito, mais especificamente na intereção do mosquito com a pessoa, criei método que identifica se existe uma pessoa na mesma célula que o mosquito e desta forma infecta a pessoa e o mesmo checa se a pessoa está infectada para transmitir o vírus para a pessoa. | Boa |
 | Paulo Vitor Silva Abi Acl | | |
-| Leonardo de Souza Takehana | Correção e edição de alguns bugs e melhoria do modelo, como a adição de probabilidades de progressão da doença, reprodução dos mosquitos e também criação de novas poças | Boa | 
-| Davi Marinho da Silva Campos | | |
-| Diógenes Dantas Lélis Júnior | Ajuda na criação do Modelo de Contaminação e ajustes no agente pessoa | Boa |
-| Bernardo Chaves Pissutti | Ajudei a desenvolver o agente da água e as interações desse agente com os agentes do mosquito e da pessoa e a mostrar a evolução  da quantidade de mosquitos na simulação. | Boa |
-| Abraão Alves | Ajuda na criação do Agente pessoas | Boa |
-| Denniel William Roriz Lima |  ||
-| Francisco Mizael Santos da Silva | | |
-| Mateus Caltabiano Neves Frauzino |  ||
-| Lucas Macedo Barboza | Ajuda na criação do Agente pessoas, ajustes no agente mosquito. | Boa |
+
 
 ## Outros
 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-
 ### Lições aprendidas
+Durante o desenvolvimento deste projeto, aprendemos sobre a complexidade do paradigma SMA e como ele pode ser aplicado para modelar interações realistas entre agentes autônomos. Também percebemos a importância da colaboração e divisão de tarefas para gerenciar o tempo e entregar um projeto de qualidade.
 
 ### Percepções
+O uso de MESA para modelagem baseada em agentes foi uma experiência enriquecedora, proporcionando uma nova perspectiva sobre simulações computacionais e como elas podem ser usadas para entender fenômenos do mundo real, como a propagação de doenças.
 
 ### Contribuições e Fragilidades
+As contribuições foram significativas, especialmente na criação de modelos realistas para a propagação da dengue. No entanto, identificamos fragilidades no equilíbrio entre a complexidade da simulação e a clareza dos resultados apresentados. Futuras iterações podem focar em aprimorar essas áreas.
 
 ### Trabalhos Futuros
+Para trabalhos futuros, consideramos a implementação de diferentes cenários de propagação, como variáveis climáticas que afetem a população de mosquitos e a inclusão de agentes de saúde pública que possam intervir na simulação. Além disso, melhorias na visualização e no desempenho da simulação são objetivos para versões subsequentes do projeto.
 
 ## Fontes
 
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G2_SMA_SimuladorDoenca
+https://github.com/UnBParadigmas2023-2/2023.2_G4_SMA
+
+Esse projeto se diferencia por incrementar a água parada que consegue ser tanto contaminada como também gerar mais mosquitos de forma probabilistica, ele possui diferenciação quando pica uma pessoa infectada ou não colocando chances da pessoa se curar e tempo de vida. Ele também corre por mais de um step ou seja a velocidade é maior que um humano também no modelo de simulação
