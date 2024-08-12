@@ -22,11 +22,12 @@
 
 ## Sobre
 
-O projeto visa demonstrar a propagação da dengue de maneira visual e utilizando o paradigma de Sistemas Multiagente (SMA). 
+O projeto visa demonstrar a propagação da dengue de maneira visual e utilizando o paradigma de Sistemas Multiagente (SMA). A simulação se inicia com uma quantidade pré-definidade de cada agente (Mosquito, Pessoa e Água parada), que pode ser configurada da maneira que o usuário desejar, entre 1 e 20 de cada agente. Na simulação, os agentes interagem entre si, sendo que os mosquitos podem infectar água parada e pessoas, as pessoas podem remover água parada e água infectada gera mais mosquitos.
 
 ## Screenshots
 
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+![Screenshot 1](./img/layout.png)
+Página Inicial do Projeto
 
 ## Instalação
 
@@ -108,7 +109,7 @@ O grupo foi separado em quatro grupos menores para as atividades ficarem melhor 
 
 - **Grupo 1**: Criar o Modelo de Contaminação;
 - **Grupo 2**: Criação do Agente Pessoas;
-- **Grupo 3** : Criação do Agente Mosquito
+- **Grupo 3**: Criação do Agente Mosquito
 - **Grupo 4**: Criação do Objeto Água Parada;
 
 ## Vídeo
