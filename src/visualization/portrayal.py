@@ -17,7 +17,7 @@ def getPortrayalPerson(agent):
     return {
         "Shape": "circle",
         "Filled": "true",
-        "Layer": 0,
+        "Layer": 1,
         "Color": getColorPerson(agent),
         "r": 0.5,
         "id": f"Pessoa {agent.unique_id}"
@@ -31,7 +31,7 @@ def circle_portrayal_example(agent):
         portrayal = {
             "Shape": "circle",
             "Filled": "true",
-            "Layer": 0,
+            "Layer": 2,
             "Color": "#964b00",
             "r": 0.5,
             "id": f"Mosquito {agent.unique_id} {agent.state}"

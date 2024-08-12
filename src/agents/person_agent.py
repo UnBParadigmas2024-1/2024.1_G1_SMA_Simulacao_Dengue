@@ -1,4 +1,7 @@
 from mesa import Agent
+import random
+import uuid
+
 
 from agents.water_object import WaterObject
 
@@ -15,7 +18,7 @@ class PersonAgent(Agent):
 
     def move(self):
         possible_steps = self.model.grid.get_neighborhood(
-            self.pos, moore=True, include_center=False  # Considera todas as 8 direções
+            self.pos, moore=True, include_center=False  
         )
 
         new_position = self.random.choice(possible_steps)
@@ -28,10 +31,16 @@ class PersonAgent(Agent):
     def interact_with_water(self):
         neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
         water_objects = [agent for agent in neighbors if isinstance(agent, WaterObject)]
-        for water in water_objects:
-            water.remove_standing_water()
-            break
-    
+        if water_objects:
+            for water in water_objects:
+                if random.random() < 0.6:
+                    water.remove_standing_water()
+                    break
+        else:
+            if random.random() < 0.1:
+                new_water = WaterObject(uuid.uuid1(), self.model)
+                self.model.grid.place_agent(new_water, self.pos)
+        
     def step(self):
         if self.state != DEAD:
             self.move()
