@@ -6,25 +6,23 @@
 
 ## Alunos
 
-| Matrícula  | Aluno                            |
-| ---------- | -------------------------------- | --- |
-| 19/0023376 | Abraão Alves Ribeiro             |
-| 19/0094257 | Paulo Henrique Rezende           |
-| 19/0047968 | Paulo Vitor Silva Abi            | Acl |
-| 23/2022952 | Leonardo de Souza Takehana       |
-| 19/0026600 | Davi Marinho da Silva Campos     |
-| 19/0105267 | Diógenes Dantas Lélis Júnior     |
-| 19/0103302 | Bernardo Chaves Pissutti         |
-| 17/0161871 | Denniel William Roriz Lima       |
-| 18/0113321 | Francisco Mizael Santos da Silva |
-| 19/0093196 | Mateus Caltabiano Neves Frauzino |
-| 19/0091720 | Lucas Macedo Barboza             |
+|Matrícula | Aluno |
+| -- | -- |
+| 19/0023376 |   Abraão Alves Ribeiro |
+| 19/0103302 |   Bernardo Chaves Pissutti |
+| 19/0026600 |   Davi Marinho da Silva Campos | 
+| 17/0161871 |   Denniel William Roriz Lima| 
+| 19/0105267 |   Diógenes Dantas Lélis Júnior| 
+| 18/0113321 |   Francisco Mizael Santos da Silva | 
+| 23/2022952 |   Leonardo de Souza Takehana| 
+| 19/0091720 |   Lucas Macedo Barboza |
+| 19/0093196 |   Mateus Caltabiano Neves Frauzino| 
+| 19/0094257 |   Paulo Henrique Rezende |
+| 19/0047968 |   Paulo Vitor Silva Abi Acl 
 
 ## Sobre
 
-Descreva o seu projeto em linhas gerais.
-Use referências, links, que permitam conhecer um pouco mais sobre o projeto.
-Capriche nessa seção, pois ela é a primeira a ser lida pelos interessados no projeto.
+O projeto visa demonstrar a propagação da dengue de maneira visual e utilizando o paradigma de Sistemas Multiagente (SMA). 
 
 ## Screenshots
 
@@ -82,13 +80,27 @@ docker compose up --build
 
 Abra o navegador e acesse o `http://localhost:8521`
 
-Obs: Para linux é necessário utilizar o comendo sudo antes
+Obs: Para linux é necessário utilizar o comando sudo antes.
+
+Caso as bibliotecas necessárias não tenham sido instaladas ao rodar `docker-compose --build`, pode ser neessário instalá-las separadamente. Para isso, basta rodar em seu terminal o seguinte comando.
+
+```
+pip install mesa numpy matplotlib
+```
 
 ## Uso
 
-Explique como usar seu projeto.
+Para utilizar o projeto, com a interface aberta no navegador, basta clicar no botão `start` do canto superior direito e a simulação se iniciará. 
+
+O primeiro gráfico mostra o comportamento dos agentes e abaixo dele a quantidade de cada agente. 
+
+Na parte superior ao centro da tela, é possível selecionar quantos frames se passarão a cada segundo, ou seja, é possível alterar a velocidade com que a simulação se passa na tela. 
+
+E por fim, na esquerda, é possível configurar a quantidade inicial de cada agente.
+
+<!-- Explique como usar seu projeto.
 Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
-Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
+Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software. -->
 
 ### Organização de tarefas
 
@@ -115,27 +127,29 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-|Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
-| -- | -- | -- |
-| Paulo Henrique -- | -- |
-| Paulo Vitor Silva Abi Acl | --- | |
-| Leonardo de Souza Takehana | --- | -- |
-| Davi Marinho da Silva Campos | --- | --- |
+| Paulo Henrique | |
+| Paulo Vitor Silva Abi Acl | | |
+| Leonardo de Souza Takehana | |
+| Davi Marinho da Silva Campos | | |
 | Diógenes Dantas Lélis Júnior | | |
-| Bernardo Chaves Pissutti | -- | -- |
-| Abraão Alves | -- | -- |
-| Denniel William Roriz Lima | -- | -- |
+| Bernardo Chaves Pissutti | | |
+| Abraão Alves | | |
+| Denniel William Roriz Lima |  ||
 | Francisco Mizael Santos da Silva | | |
-| Mateus Caltabiano Neves Frauzino | -- | -- |
+| Mateus Caltabiano Neves Frauzino |  ||
 | Lucas Macedo Barboza | Ajuda na criação do Agente pessoas, ajustes no agente mosquito. | Boa |
 
 ## Outros
 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+
+### Lições aprendidas
+
+### Percepções
+
+### Contribuições e Fragilidades
+
+### Trabalhos Futuros
 
 ## Fontes
 
