@@ -10,6 +10,8 @@ def getColorPerson(agent):
         return "yellow"
     elif agent.state == "Dengue Hemorrágica":
         return "red"
+    elif agent.state == "Curado":
+        return "purple"
     else:
         return "black"
 

@@ -9,12 +9,14 @@ HEALTHY = "Saudável"
 DENGUE = "Dengue"
 SEVERE_DENGUE = "Dengue Hemorrágica"
 DEAD = "Morto"
+RECOVERED = "Curado"
 
 class PersonAgent(Agent):
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
         self.state = HEALTHY
         self.infections = 0
+        self.infectedDays = 0
 
     def move(self):
         possible_steps = self.model.grid.get_neighborhood(
@@ -42,17 +44,33 @@ class PersonAgent(Agent):
                 new_water = WaterObject(uuid.uuid1(), self.model)
                 self.model.grid.place_agent(new_water, self.pos)
                 print("Agua parada adicionada.")
-        
+
+    def statusUpdate(self):
+        if self.state== DENGUE:
+            self.infectedDays += 1
+            if random.random()<0.2:
+                self.state=SEVERE_DENGUE
+            elif random.random()<0.01:
+                self.state=DEAD
+            elif self.infectedDays>7 and random.random()<0.5:
+                self.state=RECOVERED
+        elif self.state== SEVERE_DENGUE:
+            if random.random()<0.2:
+                self.state=DEAD
+            elif self.infectedDays>14 and random.random()<0.4:
+                self.state=RECOVERED
+
+
+
     def step(self):
         if self.state != DEAD:
             self.move()
+            self.statusUpdate()
             self.interact_with_water()
+
     
     def infect(self):
-        if self.state == "Saudável":
-            self.state = "Dengue"
+        if self.state == HEALTHY and random.random()<0.5:
+            self.state = DENGUE
             self.infections += 1
-        elif self.state == "Dengue":
-            self.state = "Dengue Hemorrágica"
-        elif self.state == "Dengue Hemorrágica":
-            self.state = "Morto"
+            self.infectedDays += 1
