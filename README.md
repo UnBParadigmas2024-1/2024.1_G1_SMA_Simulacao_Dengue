@@ -128,9 +128,9 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Paulo Henrique | |
+| Paulo Henrique | Participei do desenvolvimento do agente mosquito, mais especificamente na intereção do mosquito com a pessoa, criei método que identifica se existe uma pessoa na mesma célula que o mosquito e desta forma infecta a pessoa e o mesmo checa se a pessoa está infectada para transmitir o vírus para a pessoa. | Boa |
 | Paulo Vitor Silva Abi Acl | | |
-| Leonardo de Souza Takehana | |
+| Leonardo de Souza Takehana | Correção e edição de alguns bugs e melhoria do modelo, como a adição de probabilidades de progressão da doença, reprodução dos mosquitos e também criação de novas poças | Boa | 
 | Davi Marinho da Silva Campos | | |
 | Diógenes Dantas Lélis Júnior | | |
 | Bernardo Chaves Pissutti | | |
