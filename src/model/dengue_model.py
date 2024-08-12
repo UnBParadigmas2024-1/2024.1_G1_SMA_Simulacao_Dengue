@@ -23,8 +23,8 @@ class DengueContaminationModel(Model):
         self.datacollector = DataCollector(
             #agent_reporters={"State": lambda a: a.state, "Infections": lambda a: getattr(a, "infections", 0)}
             model_reporters={
-                "Total People": lambda m: m.num_people,
-                "Total Mosquitoes": lambda m: m.num_mosquitoes
+                "Total People": lambda m: self.get_person_count(),
+                "Total Mosquitoes": lambda m: self.get_mosquito_count(),
             },
             agent_reporters={
                 "State": lambda a: getattr(a, "state", None), 
@@ -61,6 +61,8 @@ class DengueContaminationModel(Model):
         self.reproduce_mosquitos()
         self.num_people = sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent))
         self.num_mosquitoes = sum(1 for agent in self.schedule.agents if isinstance(agent, MosquitoAgent))
+        if(self.get_mosquito_count() <= 0 or self.get_person_count() <= 0):
+            self.running = False
     
     def place_agent_randomly(self, agent):
         x = self.random.randrange(self.grid.width)
@@ -70,4 +72,9 @@ class DengueContaminationModel(Model):
             self.schedule.add(agent)
 
     def get_mosquito_count(self):
-        return len([a for a in self.schedule.agents if isinstance(a, MosquitoAgent)])
+        # Conta o número de mosquitos no modelo
+        return sum(1 for agent in self.schedule.agents if isinstance(agent, MosquitoAgent))
+    
+    def get_person_count(self):
+        # Conta o número de pessoas no modelo
+        return sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent))

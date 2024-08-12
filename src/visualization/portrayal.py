@@ -72,6 +72,6 @@ model_kwargs = {
 
 # Gráfico para a contagem de mosquitos
 situation_chart = mesa.visualization.ChartModule(
-    [{"Label": "Mosquito Count", "Color": "Green"}],
+    [{"Label": "Total Mosquitoes", "Color": "Red", }, {"Label": "Total People", "Color": "Green"}],
     data_collector_name="datacollector"
 )
