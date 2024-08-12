@@ -27,6 +27,7 @@ O projeto visa demonstrar a propagação da dengue de maneira visual e utilizand
 ## Screenshots
 
 ![Screenshot 1](./img/layout.png)
+
 Página Inicial do Projeto
 
 ## Instalação
@@ -131,13 +132,12 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Abraão Alves | Ajuda na criação do Agente pessoas | Boa |
 | Bernardo Chaves Pissutti | Ajudei a desenvolver o agente da água e as interações desse agente com os agentes do mosquito e da pessoa e a mostrar a evolução  da quantidade de mosquitos na simulação. | Boa |
 | Davi Marinho da Silva Campos |  Ajudei na criação da ideia do projeto e das regras necessárias, também criei o código inicial dos agentes, a estrutura do projeto e o layout, e posteriormente ajudei nos agentes mosquito e pessoa e na finalização do projeto.  | Boa |
-| Denniel William Roriz Lima | Estrutura do projeto, resolução de bugs e ajustes funções de step, movimentação, ajustes nas funções de PersonAgent, WaterObject e MosquitoAgent.
-Significância da Contribuição para o Projeto | Excelente |
+| Denniel William Roriz Lima | Estrutura do projeto, resolução de bugs e ajustes funções de step, movimentação, ajustes nas funções de PersonAgent, WaterObject e MosquitoAgent. Significância da Contribuição para o Projeto | Excelente |
 | Diógenes Dantas Lélis Júnior | Ajuda na criação do Modelo de Contaminação e ajustes no agente pessoa | Boa |
 | Francisco Mizael Santos da Silva | | |
 | Leonardo de Souza Takehana | Correção e edição de alguns bugs e melhoria do modelo, como a adição de probabilidades de progressão da doença, reprodução dos mosquitos e também criação de novas poças | Boa | 
 | Lucas Macedo Barboza | Ajuda na criação do Agente pessoas, ajustes no agente mosquito. | Boa |
-| Mateus Caltabiano Neves Frauzino | | |
+| Mateus Caltabiano Neves Frauzino | Correção na atualização do gráfico, partipação na elaboração do readme | Boa |
 | Paulo Henrique | Participei do desenvolvimento do agente mosquito, mais especificamente na intereção do mosquito com a pessoa, criei método que identifica se existe uma pessoa na mesma célula que o mosquito e desta forma infecta a pessoa e o mesmo checa se a pessoa está infectada para transmitir o vírus para a pessoa. | Boa |
 | Paulo Vitor Silva Abi Acl | | |
 
