@@ -137,8 +137,8 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Francisco Mizael Santos da Silva | | |
 | Leonardo de Souza Takehana | Correção e edição de alguns bugs e melhoria do modelo, como a adição de probabilidades de progressão da doença, reprodução dos mosquitos e também criação de novas poças | Boa | 
 | Lucas Macedo Barboza | Ajuda na criação do Agente pessoas, ajustes no agente mosquito. | Boa |
-| Mateus Caltabiano Neves Frauzino | Correção na atualização do gráfico, partipação na elaboração do readme | Boa |
-| Paulo Henrique | Participei do desenvolvimento do agente mosquito, mais especificamente na intereção do mosquito com a pessoa, criei método que identifica se existe uma pessoa na mesma célula que o mosquito e desta forma infecta a pessoa e o mesmo checa se a pessoa está infectada para transmitir o vírus para a pessoa. | Boa |
+| Mateus Caltabiano Neves Frauzino | Correção na atualização do gráfico e elaboração da função que conta pessoas, partipação na elaboração do readme | Boa |
+| Paulo Henrique | Participei do desenvolvimento do agente mosquito, mais especificamente na interação do mosquito com a pessoa. Criei o método responsável por picar pessoa, caso exista uma pessoa na mesma célula que o mosquito o mesmo pica/infecta a pessoa e checa se a pessoa está infectada para transmitir o vírus para o mosquito. | Boa |
 | Paulo Vitor Silva Abi Acl | | |
 
 

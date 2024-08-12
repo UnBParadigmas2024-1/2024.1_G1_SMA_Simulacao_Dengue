@@ -73,8 +73,9 @@ class DengueContaminationModel(Model):
 
     def get_mosquito_count(self):
         # Conta o número de mosquitos no modelo
-        return sum(1 for agent in self.schedule.agents if isinstance(agent, MosquitoAgent))
+        return sum(1 for agent in self.schedule.agents if isinstance(agent, MosquitoAgent) and agent.state != "Morto")
     
+
     def get_person_count(self):
         # Conta o número de pessoas no modelo
-        return sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent))
+        return sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent) and agent.state != "Morto")

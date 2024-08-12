@@ -62,12 +62,34 @@ canvas_element = mesa.visualization.CanvasGrid(
     circle_portrayal_example, 10, 10, 700, 700
 )
 
+class LegendElement(mesa.visualization.TextElement):
+    def render(self, model):
+        legend_html = """
+        <div style="font-size: 18px;">
+            <h3 style="margin-top: 10px;">Legenda</h3>
+            <span style='color: green;'>●</span> Pessoa Saudável
+            <span style='color: yellow;'>●</span> Pessoa com Dengue
+            <span style='color: red;'>●</span> Pessoa com Dengue Hemorrágica
+            <span style='color: purple;'>●</span> Pessoa Curada
+            <span style='color: black;'>●</span> Pessoa Morta
+            <span style='color: brown;'>●</span> Mosquito
+            <span style='color: cyan;'>●</span> Água Limpa
+            <span style='color: blue;'>●</span> Água Contaminada
+
+        </div>
+        """
+        return legend_html
+
+# Adiciona o TextElement da legenda
+legend_element = LegendElement()
+
+
 model_kwargs = {
     "initial_people": mesa.visualization.Slider(name="Quantidade de pessoas", min_value=0, max_value=20, step=1, value=10),
     "initial_mosquitoes": mesa.visualization.Slider(name="Quantidade de mosquitos", min_value=0, max_value=20, step=1, value=5),
     "initial_water": mesa.visualization.Slider(name="Quantidade de águas paradas", min_value=0, max_value=20, step=1, value=5),
     "width": 10,
-    "height": 10
+    "height": 10,
 }
 
 # Gráfico para a contagem de mosquitos
