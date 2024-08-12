@@ -47,9 +47,18 @@ class DengueContaminationModel(Model):
             water = WaterObject(uuid.uuid1(), self)
             self.place_agent_randomly(water)
 
+    def reproduce_mosquitos(self):
+        contaminated_waters = [water for water in WaterObject.get_all_water_objects(self) if water.state == "Contaminada"]
+        for water in contaminated_waters:
+            if water.pos:
+                new_mosquito = MosquitoAgent(uuid.uuid1(), self)
+                self.grid.place_agent(new_mosquito, water.pos)
+                self.schedule.add(new_mosquito)
+
     def step(self):
         self.schedule.step()
         self.datacollector.collect(self)
+        self.reproduce_mosquitos()
         self.num_people = sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent))
         self.num_mosquitoes = sum(1 for agent in self.schedule.agents if isinstance(agent, MosquitoAgent))
     
@@ -61,5 +70,4 @@ class DengueContaminationModel(Model):
             self.schedule.add(agent)
 
     def get_mosquito_count(self):
-        # Conta o número de mosquitos no modelo
         return len([a for a in self.schedule.agents if isinstance(a, MosquitoAgent)])

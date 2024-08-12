@@ -16,7 +16,7 @@ class MosquitoAgent(Agent):
         random_state = self.random.randint(0, 1)
 
         self.state = states[random_state]
-        self.life_time = 10
+        self.life_time = 3
 
     def move(self):
         possible_steps = self.model.grid.get_neighborhood(
@@ -42,17 +42,18 @@ class MosquitoAgent(Agent):
             if self.state == "Infectado":
                 person.infect()
     
-    def create_mosquitos(self):
+    def interact_with_water(self):
         neighbors = self.model.grid.get_neighbors(self.pos, moore=True, include_center=False)
         water_objects = [agent for agent in neighbors if isinstance(agent, WaterObject)]
 
         for water in water_objects:
-            water.state = "Contaminada"
-            print("Água contaminada.")
+            if water.state != "Contaminada":
+                water.state = "Contaminada"
+                print("Água contaminada.")
 
     def step(self):
         if self.state != DEAD:
             self.move()
+            self.interact_with_water()
             self.sting_person()
-            self.create_mosquitos()
             self.check_life_time()
