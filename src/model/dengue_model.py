@@ -61,7 +61,7 @@ class DengueContaminationModel(Model):
         self.reproduce_mosquitos()
         self.num_people = sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent))
         self.num_mosquitoes = sum(1 for agent in self.schedule.agents if isinstance(agent, MosquitoAgent))
-        if(self.get_mosquito_count() <= 0 or self.get_person_count() <= 0):
+        if((self.get_mosquito_count() <= 0  and self.get_infected_person_count()==0) or self.get_person_count() <= 0):
             self.running = False
     
     def place_agent_randomly(self, agent):
@@ -79,3 +79,7 @@ class DengueContaminationModel(Model):
     def get_person_count(self):
         # Conta o número de pessoas no modelo
         return sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent) and agent.state != "Morto")
+
+    def get_infected_person_count(self):
+        # Conta o número de pessoas no modelo
+        return sum(1 for agent in self.schedule.agents if isinstance(agent, PersonAgent) and (agent.state == "Dengue" or agent.state=="Dengue Hemorrágica"))
