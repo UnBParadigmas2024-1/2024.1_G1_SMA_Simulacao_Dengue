@@ -31,7 +31,13 @@ Este projeto utiliza o framework MESA para a modelagem baseada em agentes. O MES
 
 ## Screenshots
 
-![Screenshot 1](./img/layout.png)
+![Screenshot 1](./img/screenshot1.png)
+
+![Screenshot 2](./img/screenshot2.png)
+
+## GIF
+
+![GIF](./img/screenshot2.gif)
 
 Página Inicial do Projeto
 
@@ -209,6 +215,10 @@ O uso de MESA para modelagem baseada em agentes foi uma experiência enriquecedo
 ### Contribuições e Fragilidades
 As contribuições foram significativas, especialmente na criação de modelos realistas para a propagação da dengue. No entanto, identificamos fragilidades no equilíbrio entre a complexidade da simulação e a clareza dos resultados apresentados. Futuras iterações podem focar em aprimorar essas áreas.
 
+### Melhorias em Relação aos Outros Projetos
+Esse projeto se diferencia por incrementar a água parada que consegue ser tanto contaminada como também gerar mais mosquitos de forma probabilistica, ele possui diferenciação quando pica uma pessoa infectada ou não colocando chances da pessoa se curar e tempo de vida. Ele também corre por mais de um step ou seja a velocidade é maior que um humano também no modelo de simulação
+
+
 ### Trabalhos Futuros
 Para trabalhos futuros, consideramos a implementação de diferentes cenários de propagação, como variáveis climáticas que afetem a população de mosquitos e a inclusão de agentes de saúde pública que possam intervir na simulação. Além disso, melhorias na visualização e no desempenho da simulação são objetivos para versões subsequentes do projeto.
 
@@ -218,4 +228,3 @@ https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G2_SMA_SimuladorDoenca
 https://github.com/UnBParadigmas2023-2/2023.2_G4_SMA
 https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/arboviroses/informe-semanal/informe-semanal-no-02-coe
 
-Esse projeto se diferencia por incrementar a água parada que consegue ser tanto contaminada como também gerar mais mosquitos de forma probabilistica, ele possui diferenciação quando pica uma pessoa infectada ou não colocando chances da pessoa se curar e tempo de vida. Ele também corre por mais de um step ou seja a velocidade é maior que um humano também no modelo de simulação
