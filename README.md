@@ -24,6 +24,11 @@
 
 O projeto visa demonstrar a propagação da dengue de maneira visual e utilizando o paradigma de Sistemas Multiagente (SMA). A simulação se inicia com uma quantidade pré-definidade de cada agente (Mosquito, Pessoa e Água parada), que pode ser configurada da maneira que o usuário desejar, entre 1 e 20 de cada agente. Na simulação, os agentes interagem entre si, sendo que os mosquitos podem infectar água parada e pessoas, as pessoas podem remover água parada e água infectada gera mais mosquitos.
 
+## Uso do MESA
+
+Este projeto utiliza o framework MESA para a modelagem baseada em agentes. O MESA é um framework robusto e flexível, permitindo a criação de simulações complexas de maneira estruturada e eficiente. Sua documentação completa está disponível [aqui](https://mesa.readthedocs.io/en/stable/).
+
+
 ## Screenshots
 
 ![Screenshot 1](./img/layout.png)
@@ -115,14 +120,65 @@ O grupo foi separado em quatro grupos menores para as atividades ficarem melhor 
 
 ## Vídeo
 
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure:
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
+[Assista ao Vídeo](https://unbbr-my.sharepoint.com/:v:/g/personal/190026600_aluno_unb_br/ETuj2ymfw0RImjgIFtBUj5oBlgHocDlpwdoGv33N0uQ7SA?e=ZFP1Dz&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+## Adição de Agentes
+
+```Python
+
+class DengueContaminationModel(Model):
+    def __init__(self, width, height, initial_people, initial_mosquitoes, initial_water):
+        # Inicializa as variáveis do modelo
+        self.initial_people = initial_people
+        self.initial_mosquitoes = initial_mosquitoes
+        self.initial_water = initial_water
+
+        # Define a grade do modelo e o agendador
+        self.grid = MultiGrid(width, height, True)
+        self.schedule = RandomActivation(self)
+
+        # Contadores de agentes
+        self.num_people = initial_people
+        self.num_mosquitoes = initial_mosquitoes
+
+        # Inicializa o DataCollector para capturar dados durante a simulação
+        self.datacollector = DataCollector(
+            model_reporters={
+                "Total People": lambda m: self.get_person_count(),
+                "Total Mosquitoes": lambda m: self.get_mosquito_count(),
+            },
+            agent_reporters={
+                "State": lambda a: getattr(a, "state", None), 
+                "Infections": lambda a: getattr(a, "infections", 0)
+            }
+        )
+
+        # **Criação e inserção dos agentes na simulação**
+        # Cria e insere agentes Pessoa
+        for _ in range(self.initial_people):
+            pessoa = PersonAgent(uuid.uuid1(), self)
+            self.place_agent_randomly(pessoa)  # Posiciona o agente de forma aleatória na grade
+
+        # Cria e insere agentes Mosquito
+        for _ in range(self.initial_mosquitoes):
+            mosquito = MosquitoAgent(uuid.uuid1(), self)
+            self.place_agent_randomly(mosquito)  # Posiciona o agente de forma aleatória na grade
+        
+        # Cria e insere objetos de Água Parada
+        for _ in range(self.initial_water):
+            water = WaterObject(uuid.uuid1(), self)
+            self.place_agent_randomly(water)  # Posiciona o agente de forma aleatória na grade
+
+    def place_agent_randomly(self, agent):
+        """Posiciona um agente de forma aleatória em uma célula vazia da grade"""
+        x = self.random.randrange(self.grid.width)
+        y = self.random.randrange(self.grid.height)
+        if self.grid.is_cell_empty((x, y)):
+            self.grid.place_agent(agent, (x, y))  # Posiciona o agente na grade
+            self.schedule.add(agent)  # Adiciona o agente ao agendador
+
+    # Outros métodos do modelo...
+```
 
 ## Participações
 
@@ -160,5 +216,6 @@ Para trabalhos futuros, consideramos a implementação de diferentes cenários d
 
 https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G2_SMA_SimuladorDoenca
 https://github.com/UnBParadigmas2023-2/2023.2_G4_SMA
+https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/arboviroses/informe-semanal/informe-semanal-no-02-coe
 
 Esse projeto se diferencia por incrementar a água parada que consegue ser tanto contaminada como também gerar mais mosquitos de forma probabilistica, ele possui diferenciação quando pica uma pessoa infectada ou não colocando chances da pessoa se curar e tempo de vida. Ele também corre por mais de um step ou seja a velocidade é maior que um humano também no modelo de simulação
